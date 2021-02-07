@@ -25,5 +25,8 @@ ini_set('display_errors', env('APP_DEBUG', true));
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// Carrega o eloquent
+// Carregar o eloquent
 new App\Models\Database();
+
+// Carregar as rotas
+require __DIR__ . '/routes/route.php';
