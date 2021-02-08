@@ -18,4 +18,15 @@ class UsuarioApiController
         $usuarios = $this->usuario->with(['agendamentos'])->orderBy('id', 'ASC')->get();
         response($usuarios);
     }
+    
+    public function show($id)
+    {
+        $usuario = $this->usuario->with(['agendamentos'])->find($id);
+
+        if (!$usuario->toArray()) {
+            return response(['message' => 'Not Found'], 404);
+        }
+        
+        response($usuario);
+    }
 }

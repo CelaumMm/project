@@ -18,4 +18,15 @@ class VeiculoApiController
         $veiculos = $this->veiculo->with(['agendamentos'])->orderBy('id', 'ASC')->get();
         response($veiculos);
     }
+
+    public function show($id)
+    {
+        $veiculo = $this->veiculo->with(['agendamentos'])->find($id);
+
+        if (!$veiculo->toArray()) {
+            return response(['message' => 'Not Found'], 404);
+        }
+        
+        response($veiculo);
+    }
 }
