@@ -16,6 +16,7 @@
         "coffeecode/router": "^1.0",
         "illuminate/database": "^8.26",
         "illuminate/events": "^8.26",
+        "verot/class.upload.php": "^2.1",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
