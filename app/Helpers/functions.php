@@ -67,6 +67,51 @@ if (!function_exists('comparaDatas')) {
     }
 }
 
+if (!function_exists('horarios')) {
+    function horarios()
+    {
+        return ['08:00:00', '09:00:00', '10:00:00', '11:00:00', '12:00:00', '13:00:00', '14:00:00', '15:00:00', '16:00:00', '17:00:00', '18:00:00'];
+    }
+}
+
+if (!function_exists('semana')) {
+    function semana()
+    {
+        return ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'];
+    }
+}
+
+if (!function_exists('meses')) {
+    function meses()
+    {
+        return ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    }
+}
+
+if (!function_exists('dataHoraDisponivel')) {
+    function dataHoraDisponivel(array $indisponiveis)
+    {
+        $dataHoraDisponivel = diasDoMes();
+
+        foreach ($indisponiveis as $key => $indisponivel) {
+            $diaIndisponivel = formatDateTime($indisponivel['dia'], $format = 'd/m/Y');
+            $horarioIndisponivel = $indisponivel['horario'];
+            
+            foreach ($dataHoraDisponivel as $key2 => $dia) {
+                if ($dia['data'] == $diaIndisponivel) {
+                    $novoHorarios = array_filter($dia['horarios'], function ($value) use ($horarioIndisponivel) {
+                        return ($value != $horarioIndisponivel);
+                    });
+
+                    $dataHoraDisponivel[$key2]['horarios'] = array_values($novoHorarios);
+                }
+            }
+        }
+
+        return $dataHoraDisponivel;
+    }
+}
+
 if (!function_exists('diasDoMes')) {
     function diasDoMes($mes = null)
     {
@@ -75,8 +120,9 @@ if (!function_exists('diasDoMes')) {
         $ano = date("Y");
         $data = $dia."-".$mes."-".$ano;
         
-        $dia_da_semana = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'];
-        $meses = ['', 'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+        $dia_da_semana = semana();
+        $meses = meses();
+        
         $dia_da_semana_inicial = date('w', strtotime($data)); // pega o dia da semana em inteiro
 
         $dias = array(); // lista de dias
@@ -100,6 +146,7 @@ if (!function_exists('diasDoMes')) {
                     'nome_mes'          => $meses[$indexMes],
                     'numero_semana'     => $semana,
                     'semana'            => $dia_da_semana[$x],
+                    'horarios'          => horarios()
                 ];
             }
         
