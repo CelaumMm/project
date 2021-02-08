@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "c07f59cb-a934-4771-b11a-1d501520f8f4",
+		"name": "Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Agendamentos",
+			"item": [
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usuario_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "veiculo_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "dia",
+									"value": "2021-02-10",
+									"type": "text"
+								},
+								{
+									"key": "horario",
+									"value": "12:00:00",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/agendamentos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"agendamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/agendamentos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"agendamentos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Disponivel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/agendamentos/disponiveis",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"agendamentos",
+								"disponiveis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/agendamentos/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"agendamentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Veiculos",
+			"item": [
+				{
+					"name": "Lista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/veiculos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"veiculos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/veiculos/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"veiculos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Lista",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/usuarios",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/usuarios/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"usuarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
